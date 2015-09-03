@@ -25,7 +25,7 @@
     },
     "autoload": {
         "psr-4": {
-            "vendocrat\\Sample\\" : "src/"
+            "vendocrat\\Meta\\" : "src/"
         }
     },
     "extra": {
