@@ -1,7 +1,6 @@
 <?php namespace vendocrat\Meta;
 
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Collection as BaseCollection;
 
 trait MetableTrait
 {
@@ -13,6 +12,7 @@ trait MetableTrait
 	/**
 	 * True when the meta is loaded
 	 *
+	 * @deprecated
 	 * @var
 	 */
 	protected $metaLoaded = false;
@@ -71,6 +71,8 @@ trait MetableTrait
 	/**
 	 * Adds meta data
 	 *
+	 * @param $key
+	 * @param $value
 	 * @return mixed
 	 */
 	public function setMeta( $key, $value )
@@ -97,6 +99,8 @@ trait MetableTrait
 	 * Appends a value to an existing meta entry
 	 * Resets all keys
 	 *
+	 * @param $key
+	 * @param $value
 	 * @return mixed
 	 */
 	public function appendMeta( $key, $value )
@@ -121,6 +125,9 @@ trait MetableTrait
 	/**
 	 * Updates meta data
 	 *
+	 * @param $key
+	 * @param $newValue
+	 * @param bool $oldValue
 	 * @return mixed
 	 */
 	public function updateMeta( $key, $newValue, $oldValue = false )
@@ -128,7 +135,7 @@ trait MetableTrait
 		$meta = $this->getMeta($key, null, true);
 
 		if ( $meta == null ) {
-			return $this->addMeta($key, $newValue);
+			return $this->setMeta($key, $newValue);
 		}
 
 		$obj = $this->getEditableItem($meta, $oldValue);
@@ -178,6 +185,8 @@ trait MetableTrait
 	/**
 	 * Gets an item to edit
 	 *
+	 * @param $meta
+	 * @param $value
 	 * @return mixed
 	 */
 	protected function getEditableItem( $meta, $value )
