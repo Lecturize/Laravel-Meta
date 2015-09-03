@@ -14,7 +14,7 @@ class Meta extends Model
 	 *
 	 * @var string
 	 */
-	protected $table = 'media';
+	protected $table = 'meta';
 
 	/**
 	 * The attributes that are mass assignable.
@@ -54,9 +54,9 @@ class Meta extends Model
 	public function setValueAttribute( $value )
 	{
 		if ( is_array($value) || is_object($value) ) {
-			$this->attributes['meta_value'] = serialize($value);
+			$this->attributes['value'] = serialize($value);
 		} else {
-			$this->attributes['meta_value'] = $value;
+			$this->attributes['value'] = $value;
 		}
 	}
 

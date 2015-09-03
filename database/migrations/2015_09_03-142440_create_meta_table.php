@@ -29,11 +29,11 @@ class MetaTable extends Migration
 		{
 		    $table->increments('id');
 
-            $table->integer('metable_id')->unsigned()->index();
-            $table->string('metable_type');
-
             $table->string('key', 255)->index();
             $table->longText('value')->nullable();
+
+            $table->integer('metable_id')->unsigned()->index();
+            $table->string('metable_type');
 
             $table->timestamps();
             $table->softDeletes();
