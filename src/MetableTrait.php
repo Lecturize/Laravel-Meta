@@ -18,6 +18,16 @@ trait MetableTrait
 	protected $metaLoaded = false;
 
 	/**
+	 * Get all meta data for this model.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+	 */
+	public function meta()
+	{
+		return $this->morphMany('vendocrat\Meta\Models\Meta');
+	}
+
+	/**
 	 * Load the meta data
 	 *
 	 * @return BaseCollection|null
@@ -52,7 +62,8 @@ trait MetableTrait
 	 * @param $key
 	 * @param $value
 	 * @param bool $autosave
-	 * @return bool
+	 *
+	 * @return mixed
 	 */
 	public function setMeta( $key, $value = null, $autosave = true )
 	{
@@ -62,9 +73,8 @@ trait MetableTrait
 
 		$set = $this->$setMeta( $key, $value );
 
-		if ( $autosave ) {
+		if ( $autosave )
 			return $this->saveMeta();
-		}
 
 		return $set;
 	}
@@ -74,11 +84,11 @@ trait MetableTrait
 		$this->loadMetaData();
 
 		if ( $this->meta->has($key) ) {
-			$this->meta[$key]->meta_value = maybe_serialize($value);
+			$this->meta[$key]->meta_value = MetableUtils::maybe_serialize($value);
 		} else {
 			$this->meta[$key] = $this->newMetaModel([
 				'meta_key'   => strtolower($key),
-				'meta_value' => maybe_serialize($value)
+				'meta_value' => MetableUtils::maybe_serialize($value)
 			]);
 		}
 	}
@@ -112,7 +122,7 @@ trait MetableTrait
 			return null;
 		}
 
-		return ($raw) ? $meta : maybe_unserialize($meta->meta_value);
+		return ($raw) ? $meta : MetableUtils::maybe_unserialize($meta->meta_value);
 	}
 
 	/**
@@ -129,7 +139,7 @@ trait MetableTrait
 
 		foreach ( $this->meta as $meta ) {
 			if ( ! $meta->isDeleted() ) {
-				$return->put( $meta->meta_key, ($raw ? $meta : maybe_unserialize($meta->meta_value) ) );
+				$return->put( $meta->meta_key, ($raw ? $meta : MetableUtils::maybe_unserialize($meta->meta_value) ) );
 			}
 		}
 
@@ -191,6 +201,8 @@ trait MetableTrait
 
 	/**
 	 * Persist the meta data
+	 *
+	 * @return bool
 	 */
 	public function saveMeta()
 	{
@@ -205,6 +217,8 @@ trait MetableTrait
 				$meta->save();
 			}
 		}
+
+		return true;
 	}
 
 	/**
