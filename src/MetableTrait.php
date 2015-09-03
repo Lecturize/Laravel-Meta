@@ -65,7 +65,7 @@ trait MetableTrait
 	 */
 	public function getAllMeta()
 	{
-		return new Collection($this->meta->lists('value', 'key'));
+		return $this->meta()->lists('value', 'key');
 	}
 
 	/**
@@ -77,22 +77,22 @@ trait MetableTrait
 	 */
 	public function setMeta( $key, $value )
 	{
-		return $this->updateMeta( $key, $value );
-		/*
-		$existing = $this->meta()
+		$meta = $this->meta()
 			->where('key', $key)
-			->where('value', MetableUtils::maybe_serialize($value))
 			->first();
 
-		if ( $existing ) {
-			return false;
+		if ( is_object($meta) && $meta !== null ) {
+			$meta = $meta->update([
+				'value' => $value
+			]);
+
+			return $meta;
 		}
 
-		return $meta = $this->meta()->find([
+		return $meta = $this->meta()->create([
 			'key'   => $key,
 			'value' => $value,
 		]);
-		*/
 	}
 
 	/**
