@@ -10,6 +10,8 @@ Simple and fluent meta data for Eloquent Models in Laravel 5.
 
 Require the package from your `composer.json` file
 
+**Attention:** This package is a work in progress, please use with care and be sure to report any issues!
+
 ```php
 "require": {
 	"vendocrat/laravel-meta": "dev-master"
