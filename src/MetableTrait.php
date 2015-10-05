@@ -1,7 +1,12 @@
 <?php namespace vendocrat\Meta;
 
 use Illuminate\Database\Eloquent\Collection;
+use vendocrat\Meta\Models\Meta;
 
+/**
+ * Class MetableTrait
+ * @package vendocrat\Meta
+ */
 trait MetableTrait
 {
 	/**
@@ -24,7 +29,7 @@ trait MetableTrait
 	 */
 	public function meta()
 	{
-		return $this->morphMany('vendocrat\Meta\Models\Meta', 'metable');
+		return $this->morphMany(Meta::class, 'metable');
 	}
 
 	/**
