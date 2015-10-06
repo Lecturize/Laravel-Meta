@@ -225,9 +225,8 @@ trait MetableTrait
 	 */
 	public function hasMeta( $key )
 	{
-		if ( $meta = $this->meta()->where('key', $key)->first() ) {
+		if ( $meta = $this->getMeta($key) )
 			return true;
-		}
 
 		return false;
 	}
@@ -242,7 +241,7 @@ trait MetableTrait
 	{
 		return $query->whereHas('meta', function($q) use($key, $value) {
 			$q->where( 'key', '=', strtolower($key) )
-				->where( 'value', '=', $value );
+			  ->where( 'value', '=', $value );
 		});
 	}
 }
