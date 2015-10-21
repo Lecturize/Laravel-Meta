@@ -157,6 +157,29 @@ trait MetableTrait
 	}
 
 	/**
+	 * Increments meta data
+	 *
+	 * @param $key
+	 * @return mixed
+	 */
+	public function incrementMeta( $key )
+	{
+		$meta = $this->getMeta($key, 0, true);
+
+		if ( ! $meta ) {
+			$meta = $this->setMeta($key, 0);
+		}
+
+		$value = $meta->value;
+		$value = is_int($value) && $value >= 0 ? $value : 0;
+
+		$meta->value = $value + 1;
+		$meta->save();
+
+		return $meta;
+	}
+
+	/**
 	 * Deletes meta data
 	 *
 	 * @param $key
