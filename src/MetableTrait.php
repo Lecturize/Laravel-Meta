@@ -171,7 +171,7 @@ trait MetableTrait
 		}
 
 		$value = $meta->value;
-		$value = is_int($value) && $value >= 0 ? $value : 0;
+		$value = $value >= 0 ? $value : 0;
 
 		$meta->value = $value + 1;
 		$meta->save();
