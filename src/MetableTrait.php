@@ -70,7 +70,7 @@ trait MetableTrait
 	 */
 	public function getAllMeta()
 	{
-		return $this->meta()->lists('value', 'key');
+		return $this->meta()->pluck('value', 'key');
 	}
 
 	/**
