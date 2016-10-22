@@ -8,7 +8,7 @@ Simple and fluent meta data for Eloquent Models in Laravel 5.
 
 ## Important Notice
 
-We've transferred this package to a new owner and therefor updated the namespaces to **Lecturize\Addresses**. The config file is now `config/lecturize.php`.
+We've transferred this package to a new owner and therefor updated the namespaces to **Lecturize\Meta**. The config file is now `config/lecturize.php`.
 
 ## Installation
 
@@ -37,7 +37,7 @@ Next register the service provider and (optional) facade to your `config/app.php
 ## Configuration & Migration
 
 ```bash
-$ php artisan vendor:publish --provider="lecturize\Meta\MetaServiceProvider"
+$ php artisan vendor:publish --provider="Lecturize\Meta\MetaServiceProvider"
 ```
 
 This will create a `config/lecturize.php` and a migration file. In the config file you can customize the table names, finally you'll have to run migration like so:

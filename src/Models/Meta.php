@@ -10,17 +10,13 @@ class Meta extends Model
 	use SoftDeletes;
 
 	/**
-	 * The database table used by the model.
      * @todo make this editable via config file
-	 *
-	 * @var string
+     * @inheritdoc
 	 */
 	protected $table = 'meta';
 
 	/**
-	 * The attributes that are mass assignable.
-	 *
-	 * @var array
+     * @inheritdoc
 	 */
 	protected $fillable = [
 		'metable_id',
@@ -30,9 +26,7 @@ class Meta extends Model
 	];
 
 	/**
-	 * Available datatypes
-	 *
-	 * @var array
+     * @inheritdoc
 	 */
 	protected $dataTypes = ['boolean', 'integer', 'double', 'float', 'string', 'NULL'];
 
