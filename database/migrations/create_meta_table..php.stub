@@ -15,7 +15,7 @@ class MetaTable extends Migration
      */
     public function __construct()
     {
-        $this->table = config('meta.table');
+        $this->table = config('lecturize.meta.table', 'meta');
     }
 
     /**

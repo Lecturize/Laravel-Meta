@@ -1,23 +1,22 @@
-<?php namespace vendocrat\Meta;
+<?php namespace Lecturize\Meta;
 
 use Illuminate\Support\ServiceProvider;
 
 class MetaServiceProvider extends ServiceProvider
 {
-	/**
+    protected $migrations = [
+        'CreateMetaTable' => 'create_meta_table'
+    ];
+
+    /**
 	 * Boot the service provider.
 	 *
 	 * @return void
 	 */
 	public function boot()
 	{
-		$this->publishes([
-			__DIR__ .'/../config/config.php' => config_path('meta.php')
-		], 'config');
-
-		$this->publishes([
-			__DIR__ .'/../database/migrations/' => database_path('migrations')
-		], 'migrations');
+        $this->handleConfig();
+        $this->handleMigrations();
 	}
 
 	/**
@@ -27,14 +26,7 @@ class MetaServiceProvider extends ServiceProvider
 	 */
 	public function register()
 	{
-		$this->mergeConfigFrom(
-			__DIR__ .'/../config/config.php',
-			'meta'
-		);
-
-		$this->app->singleton(Meta::class, function ($app) {
-			return new Meta($app);
-		});
+    //  $this->app->singleton(Meta::class);
 	}
 
 	/**
@@ -44,8 +36,39 @@ class MetaServiceProvider extends ServiceProvider
 	 */
 	public function provides()
 	{
-		return [
-			Meta::class
-		];
+		return [];
 	}
+
+    /**
+     * Publish and merge the config file
+     *
+     * @return void
+     */
+    private function handleConfig()
+    {
+        $configPath = __DIR__ . '/../config/config.php';
+
+        $this->publishes([$configPath => config_path('lecturize.php')]);
+
+        $this->mergeConfigFrom($configPath, 'lecturize');
+    }
+
+    /**
+     * Publish migrations
+     *
+     * @return void
+     */
+    private function handleMigrations()
+    {
+        foreach ( $this->migrations as $class => $file ) {
+            if ( ! class_exists($class) ) {
+                $timestamp = date('Y_m_d_His', time());
+
+                $this->publishes([
+                    __DIR__ .'/../database/migrations/'. $file .'.php.stub' =>
+                        database_path('migrations/'. $timestamp .'_'. $file .'.php')
+                ], 'migrations');
+            }
+        }
+    }
 }

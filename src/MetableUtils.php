@@ -1,4 +1,4 @@
-<?php namespace vendocrat\Meta;
+<?php namespace Lecturize\Meta;
 
 class MetableUtils
 {
@@ -80,16 +80,22 @@ class MetableUtils
 				} elseif ( false === strpos( $data, '"' ) ) {
 					return false;
 				}
+				break;
+
 			// or else fall through
 			case 'a' :
 			case 'O' :
 				return (bool) preg_match( "/^{$token}:[0-9]+:/s", $data );
-			case 'b' :
+                break;
+
+            case 'b' :
 			case 'i' :
 			case 'd' :
 				$end = $strict ? '$' : '';
 				return (bool) preg_match( "/^{$token}:[0-9.E-]+;$end/", $data );
-		}
+                break;
+
+        }
 		return false;
 	}
 }

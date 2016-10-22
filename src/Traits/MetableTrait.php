@@ -1,11 +1,11 @@
-<?php namespace vendocrat\Meta;
+<?php namespace Lecturize\Meta\Traits;
 
 use Illuminate\Database\Eloquent\Collection;
-use vendocrat\Meta\Models\Meta;
+use Lecturize\Meta\Models\Meta;
 
 /**
  * Class MetableTrait
- * @package vendocrat\Meta
+ * @package Lecturize\Meta
  */
 trait MetableTrait
 {

@@ -1,7 +1,7 @@
 {
-    "name": "vendocrat/laravel-meta",
+    "name": "lecturize/laravel-meta",
     "description": "Simple and fluent meta data for Eloquent Models in Laravel 5.",
-    "homepage" : "https://github.com/AlexanderPoellmann/laravel-meta",
+    "homepage" : "https://github.com/Lecturize/Laravel-Meta",
     "license": "MIT",
     "keywords": [
         "meta",
@@ -29,7 +29,7 @@
     },
     "autoload": {
         "psr-4": {
-            "vendocrat\\Meta\\" : "src/"
+            "Lecturize\\Meta\\" : "src/"
         }
     },
     "extra": {
@@ -38,7 +38,7 @@
         }
     },
     "support" : {
-        "source" : "https://github.com/AlexanderPoellmann/laravel-meta",
-        "issues" : "https://github.com/AlexanderPoellmann/laravel-meta/issues"
+        "source" : "https://github.com/Lecturize/Laravel-Meta",
+        "issues" : "https://github.com/Lecturize/Laravel-Meta/issues"
     }
 }

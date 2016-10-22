@@ -1,4 +1,4 @@
-<?php namespace vendocrat\Meta\Contracts;
+<?php namespace Lecturize\Meta\Contracts;
 
 interface MetableInterface
 {

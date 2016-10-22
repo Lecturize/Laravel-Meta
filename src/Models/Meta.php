@@ -1,6 +1,6 @@
-<?php namespace vendocrat\Meta\Models;
+<?php namespace Lecturize\Meta\Models;
 
-use vendocrat\Meta\MetableUtils;
+use Lecturize\Meta\MetableUtils;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -11,6 +11,7 @@ class Meta extends Model
 
 	/**
 	 * The database table used by the model.
+     * @todo make this editable via config file
 	 *
 	 * @var string
 	 */
@@ -49,7 +50,6 @@ class Meta extends Model
 	 * Set the value attribute
 	 *
 	 * @param $value
-	 * @return mixed
 	 */
 	public function setValueAttribute( $value )
 	{

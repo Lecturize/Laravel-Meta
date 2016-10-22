@@ -11,6 +11,6 @@ class Meta extends Facade
 	 */
 	protected static function getFacadeAccessor()
 	{
-		return \vendocrat\Meta\Meta::class;
+		return 'meta';
 	}
 }
