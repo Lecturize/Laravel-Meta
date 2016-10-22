@@ -8,6 +8,8 @@ Simple and fluent meta data for Eloquent Models in Laravel 5.
 
 ## Important Notice
 
+**This package is a work in progress**, please use with care and feel free to report any issues or ideas you may have!
+
 We've transferred this package to a new owner and therefor updated the namespaces to **Lecturize\Meta**. The config file is now `config/lecturize.php`.
 
 ## Installation
