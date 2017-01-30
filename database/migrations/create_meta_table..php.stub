@@ -29,7 +29,7 @@ class MetaTable extends Migration
 		{
 		    $table->increments('id');
 
-            $table->string('key', 255)->index();
+            $table->string('key')->index();
             $table->longText('value')->nullable();
 
             $table->integer('metable_id')->unsigned()->index();
