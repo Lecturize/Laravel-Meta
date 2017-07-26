@@ -6,12 +6,14 @@ use Illuminate\Database\Migrations\Migration;
 class MetaTable extends Migration
 {
     /**
-     * Table name
+     * Table names.
+     *
+     * @var string  $table  The main table name for this migration.
      */
-    private $table;
+    protected $table;
 
     /**
-     * Constructor
+     * Create a new migration instance.
      */
     public function __construct()
     {
@@ -46,7 +48,7 @@ class MetaTable extends Migration
      */
     public function down()
     {
-        Schema::drop($this->table);
+        Schema::dropIfExists($this->table);
     }
 }
 
