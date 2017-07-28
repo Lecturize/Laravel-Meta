@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class MetaTable extends Migration
+class CreateMetaTable extends Migration
 {
     /**
      * Table names.
