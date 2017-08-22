@@ -20,7 +20,7 @@ Require the package from your `composer.json` file
 
 ```php
 "require": {
-	"lecturize/laravel-meta": "dev-master"
+    "lecturize/laravel-meta": "dev-master"
 }
 ```
 

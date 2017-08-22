@@ -7,5 +7,5 @@
  */
 trait MetableTrait
 {
-	use HasMeta;
+    use HasMeta;
 }
