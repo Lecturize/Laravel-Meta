@@ -3,5 +3,5 @@ return [
     /*
      * Contacts
      */
-	'table' => 'meta'
+    'table' => 'meta'
 ];
