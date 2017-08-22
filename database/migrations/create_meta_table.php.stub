@@ -28,17 +28,17 @@ class CreateMetaTable extends Migration
     public function up()
     {
         Schema::create($this->table, function(Blueprint $table)
-		{
-		    $table->increments('id');
+        {
+            $table->increments('id');
 
-            $table->string('key')->index();
-            $table->longText('value')->nullable();
+            $table->string('key')->nullable()->index();
+            $table->text('value')->nullable();
 
             $table->nullableMorphs('metable');
 
             $table->timestamps();
             $table->softDeletes();
-		});
+        });
     }
 
     /**
