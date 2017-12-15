@@ -36,9 +36,9 @@ class Meta extends Model
     /**
      * @inheritdoc
      */
-    public function __construct()
+    public function __construct(array $attributes = [])
     {
-        parent::__construct();
+        parent::__construct($attributes);
 
         $this->table = config('lecturize.meta.table', 'meta');
     }
