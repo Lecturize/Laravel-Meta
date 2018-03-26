@@ -37,6 +37,11 @@
     "extra": {
         "branch-alias" : {
             "dev-master" : "0.0.x-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Lecturize\\Meta\\MetaServiceProvider"
+            ]
         }
     },
     "support" : {
